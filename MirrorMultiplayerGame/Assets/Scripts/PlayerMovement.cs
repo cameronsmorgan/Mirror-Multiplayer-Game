@@ -12,7 +12,7 @@ public class PlayerMovement : NetworkBehaviour
     private InputSystem_Actions controls;
     private Vector2 movementInput;
 
-
+    private LayerMask groundLayerMask;
 
     private void Awake()
     {
@@ -49,6 +49,12 @@ public class PlayerMovement : NetworkBehaviour
         if (!isLocalPlayer)
         {
             return;
+        }
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position + Vector3.up, Vector3.down, out hit, 2f, groundLayerMask))
+        {
+            transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
         }
 
         Vector3 move = new Vector3(movementInput.x, 0, movementInput.y);
