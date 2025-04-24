@@ -41,7 +41,7 @@ public class FPS : NetworkBehaviour
             playerCamera.gameObject.SetActive(false);
         }
         // Lock cursor
-        Cursor.lockState = CursorLockMode.Locked;
+       // Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
